@@ -1,0 +1,15 @@
+quantity,value,unit
+n_atoms,4016,
+n_As,1990,
+n_Ga,2026,
+box_edge,100.0,A
+Rg_Ga,22.161,A
+mean_CN_Ga_As_3.2A,3.7912,
+frac_Ga_CN4,0.7986,
+bond_mean_all,2.5233,A
+bond_std_all,0.0916,A
+bond_mean_CN4,2.521,A
+bond_std_CN4,0.0845,A
+nn_GaGa_mean,3.5674,A
+nn_AsAs_mean,3.7767,A
+angle_AsGaAs_mean,109.26,deg

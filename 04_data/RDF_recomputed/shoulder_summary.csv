@@ -1,0 +1,6 @@
+T_nominal_K,n_frames,n_local_max_in_2.30_2.50A,step_r_A,step_depth_perA,step_significance_sigma
+200,4,0,2.435,6.6,1.23
+400,7,0,2.405,2.7,0.82
+700,7,3,2.435,5.7,1.58
+1000,7,3,2.365,1.9,1.59
+1800,7,4,2.375,1.1,0.79

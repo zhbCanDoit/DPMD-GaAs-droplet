@@ -1,0 +1,6 @@
+# This archive is a set of numerical data files, not source code.
+# Line-ending conversion would change the bytes of every .data, .lammps and .csv
+# file and invalidate the MD5 sums listed in _filelist.tsv and README.md.
+# Therefore ALL files are treated as binary: no CRLF<->LF normalisation, no
+# end-of-line conversion on checkout, no diff munging.
+* -text

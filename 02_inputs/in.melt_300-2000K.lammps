@@ -1,0 +1,29 @@
+# bulk GaAs
+
+units           metal
+boundary        p p p
+atom_style      atomic
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check no
+
+read_data	./GaAs4096atoms
+
+pair_style	deepmd ./GaAs-semi.pb
+pair_coeff  * *	Ga As
+
+mass            1 69.72
+mass            2 74.92
+
+group           Ga  type 1
+group           As  type 2
+
+velocity        all create 300 23456789
+timestep        0.001
+fix             1 all nvt temp 300 2000 0.1
+
+thermo_style    custom step pe ke etotal temp press vol 
+thermo          50
+dump        1 all custom 50 GaAs-2000k.xyz id type x y z
+
+run            3000000

@@ -1,0 +1,36 @@
+# Ga-rich GaAs droplet: 976 atoms (477 As + 499 Ga), vacuum box 100x100x100 A
+# Cooling 1800 -> 200 K at 50 K/ns  (32 ns = 3200000 steps x 0.01 ps)
+#
+# NOTE ON ATOM TYPES:
+#   From GaAs-last-noC :  type 1 = As (mass 74.92),  type 2 = Ga (mass 69.72)
+#   The DP model GaAs-semi.pb has type_map = ["Ga","As"], so the mapping MUST be
+#   stated explicitly as "As Ga" below; leaving it blank would make deepmd treat
+#   type 1 as Ga and silently swap the two elements.
+
+units           metal
+boundary        p p p
+atom_style      atomic
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check no
+
+read_data       ./GaAs-last-noC
+
+pair_style      deepmd ./GaAs-semi.pb
+pair_coeff      * * As Ga
+
+mass            1 74.92
+mass            2 69.72
+
+group           As  type 1
+group           Ga  type 2
+
+velocity        all create 1800 23456789
+timestep        0.01
+fix             1 all nvt temp 1800 200 1
+
+thermo_style    custom step pe ke etotal temp press vol
+thermo          500
+dump            1 all custom 500 GaAs.xyz id type x y z
+
+run             3200000
